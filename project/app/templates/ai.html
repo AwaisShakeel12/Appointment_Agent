@@ -1,0 +1,330 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS_AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+       
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #141e30, #243b55);
+            background: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 38%;
+            background-color: #2575fc;
+            clip-path: polygon(100% 0%, 0% 0%, 0.00% 83.33%, 2.00% 83.16%, 4.00% 82.63%, 
+                6.00% 81.78%, 8.00% 80.62%, 10.00% 79.21%, 12.00% 77.59%, 14.00% 75.82%, 
+                16.00% 73.96%, 18.00% 72.08%, 20.00% 70.24%, 22.00% 68.52%, 24.00% 66.96%, 
+                26.00% 65.63%, 28.00% 64.57%, 30.00% 63.82%, 32.00% 63.41%, 34.00% 63.35%, 
+                36.00% 63.65%, 38.00% 64.29%, 40.00% 65.24%, 42.00% 66.49%, 44.00% 67.98%, 
+                46.00% 69.65%, 48.00% 71.46%, 50.00% 73.33%, 52.00% 75.21%, 54.00% 77.01%, 
+                56.00% 78.69%, 58.00% 80.18%, 60.00% 81.42%, 62.00% 82.38%, 64.00% 83.02%, 
+                66.00% 83.31%, 68.00% 83.25%, 70.00% 82.84%, 72.00% 82.10%, 74.00% 81.04%, 
+                76.00% 79.71%, 78.00% 78.15%, 80.00% 76.42%, 82.00% 74.59%, 84.00% 72.71%, 
+                86.00% 70.85%, 88.00% 69.08%, 90.00% 67.46%, 92.00% 66.04%, 94.00% 64.89%, 
+                96.00% 64.04%, 98.00% 63.51%, 100.00% 63.33%);
+            z-index: -1;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            height: 80vh;
+            display: flex;
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+
+        .left-side {
+            width: 40%;
+            background: url('/app/bg.png') center/cover no-repeat;
+        }
+
+        .right-side {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+        }
+
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #2575fc;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(245, 245, 245, 0.683);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(245, 245, 245, 0.683);
+        }
+
+        ::-webkit-scrollbar-thumb:active {
+            background: rgba(245, 245, 245, 0.683);
+        }
+
+        ::-moz-scrollbar {
+            width: 8px;
+        }
+
+        ::-moz-scrollbar-track {
+            background: #2575fc;
+            border-radius: 10px;
+        }
+
+        ::-moz-scrollbar-thumb {
+            background: #2575fc;
+            border-radius: 10px;
+        }
+
+        ::-moz-scrollbar-thumb:hover {
+            background: #2575fc;
+        }
+
+        ::-moz-scrollbar-thumb:active {
+            background: #2575fc;
+        }
+
+        .chat-header {
+        
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: transparent;
+        
+            
+          
+        
+        }
+
+       
+
+        .chat-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background-color: #2575fc;
+           
+            clip-path: polygon(100% 0%, 0% 0%, 0.00% 83.33%, 2.00% 83.16%, 4.00% 82.63%, 
+                6.00% 81.78%, 8.00% 80.62%, 10.00% 79.21%, 12.00% 77.59%, 14.00% 75.82%, 
+                16.00% 73.96%, 18.00% 72.08%, 20.00% 70.24%, 22.00% 68.52%, 24.00% 66.96%, 
+                26.00% 65.63%, 28.00% 64.57%, 30.00% 63.82%, 32.00% 63.41%, 34.00% 63.35%, 
+                36.00% 63.65%, 38.00% 64.29%, 40.00% 65.24%, 42.00% 66.49%, 44.00% 67.98%, 
+                46.00% 69.65%, 48.00% 71.46%, 50.00% 73.33%, 52.00% 75.21%, 54.00% 77.01%, 
+                56.00% 78.69%, 58.00% 80.18%, 60.00% 81.42%, 62.00% 82.38%, 64.00% 83.02%, 
+                66.00% 83.31%, 68.00% 83.25%, 70.00% 82.84%, 72.00% 82.10%, 74.00% 81.04%, 
+                76.00% 79.71%, 78.00% 78.15%, 80.00% 76.42%, 82.00% 74.59%, 84.00% 72.71%, 
+                86.00% 70.85%, 88.00% 69.08%, 90.00% 67.46%, 92.00% 66.04%, 94.00% 64.89%, 
+                96.00% 64.04%, 98.00% 63.51%, 100.00% 63.33%);
+            z-index: 1;
+        }
+
+        .header_name{
+          
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: -20px;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .chat-message {
+            margin-top: 40px;
+            margin-bottom: 15px;
+            display: flex;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        .chat-message.user {
+            justify-content: flex-end;
+        }
+
+        .chat-message.user .message-content {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            text-align: right;
+        }
+
+        .chat-message.ai .message-content {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            background: linear-gradient(to right, #f8f6f6, #bec0c2);
+            color: black;
+        }
+
+        .message-content {
+            padding: 12px 16px;
+            border-radius: 15px;
+            max-width: 70%;
+            word-wrap: break-word;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            gap: 10px;
+            border-color:#0072ff;
+        }
+
+
+        .chat-input input {
+            flex-grow: 1;
+            padding: 12px;
+            border-radius: 25px;
+            font-size: 16px;
+          
+            border-color:#0072ff;
+           
+            color: black;
+           
+        }
+
+        .chat-input button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(to right, #ff512f, #dd2476);
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .chat-input button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 81, 47, 0.6);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .corner-top-left {
+            position: absolute;
+            top: 70%;
+            left: 85%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle at top left, #3b82f6, #60a5fa);
+            clip-path: circle(50% at 50% 50%);
+            z-index: -1;
+        }
+
+        .corner-top-right {
+            position: absolute;
+            top: 77%;
+            left: 4.7%;
+            width: 165px;
+            height: 165px;
+            background: radial-gradient(circle at top left, #3b82f6, #60a5fa);
+            clip-path: circle(50% at 50% 50%);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="">
+
+   
+  
+        <div class="container">
+            <div class="left-side"></div>
+            <div class="right-side">
+                <div class="chat-header"> </div>
+                <div class="header_name" style="z-index: 1;">Appointment Booking AI   <span style="color: gold;">&#9733;</span></div>
+
+                <div class="chat-messages" id="chatMessages">
+                    {% for message in conversation %}
+                        <div class="chat-message {{ message.sender|lower }}">
+                            {% if message.sender == 'AI' %}
+                                <img src="/app/robot.png" style=" height: 35px; width: 35px; margin-right: 10px; background-position: center;">
+                      
+                            {% endif %}
+                            
+                            <div class="message-content">
+                                <strong></strong> {{ message.message }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <form class="chat-input" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="user_msg" placeholder="Type your message...">
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+        
+    <div class="corner-top-left"></div>
+    <div class="corner-top-right"></div>
+
+
+        <script>
+            function scrollToBottom() {
+                var chatMessages = document.getElementById('chatMessages');
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+    
+            window.onload = scrollToBottom;
+    
+            var observer = new MutationObserver(function() {
+                scrollToBottom();
+            });
+    
+            var chatMessages = document.getElementById('chatMessages');
+            observer.observe(chatMessages, { childList: true });
+        </script>
+    
+</body>
+</html>
